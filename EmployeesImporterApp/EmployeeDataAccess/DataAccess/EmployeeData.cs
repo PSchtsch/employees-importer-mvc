@@ -3,8 +3,7 @@ using EmployeeDataAccess.Models;
 
 namespace EmployeeDataAccess.DataAccess;
 
-//TODO: extract interface
-public class EmployeeData
+public class EmployeeData : IEmployeeData
 {
     private readonly ISqlDataAccess _db;
 
@@ -20,11 +19,11 @@ public class EmployeeData
             new { });
     }
 
-    //for searching
-    public Task<IEnumerable<EmployeeModel>> GetEmployeesAsync(string employeeName)
+    public Task<IEnumerable<EmployeeModel>> GetEmployeesAsync(string searchTerm)
     {
-        //add local method for name/fullname, new sp
-        throw new NotImplementedException();
+        return _db.LoadDataAsync<EmployeeModel, dynamic>(
+            "dbo.spEmployee_GetBySearchTerm",
+            searchTerm);
     }
 
     public async Task<EmployeeModel?> GetEmployeeAsync(int id)

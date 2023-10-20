@@ -59,6 +59,7 @@
     <Folder Include="dbo\" />
     <Folder Include="dbo\Tables\" />
     <Folder Include="dbo\StoredProcedures\" />
+    <Folder Include="dbo\Types\" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Employee.sql" />
@@ -67,7 +68,9 @@
     <Build Include="dbo\StoredProcedures\spEmployee_Delete.sql" />
     <Build Include="dbo\StoredProcedures\spEmployee_Insert.sql" />
     <Build Include="dbo\StoredProcedures\spEmployee_Update.sql" />
-    <Build Include="dbo\StoredProcedures\spEmployee_GetByForenameOrSurname.sql" />
+    <Build Include="dbo\StoredProcedures\spEmployee_GetBySearchTerm.sql" />
+    <Build Include="dbo\Types\EmployeeSet.sql" />
+    <Build Include="dbo\StoredProcedures\spEmployee_InsertSet.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Script.PostDeployment.sql" />
