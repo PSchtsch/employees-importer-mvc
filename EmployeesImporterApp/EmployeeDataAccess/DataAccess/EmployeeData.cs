@@ -35,10 +35,17 @@ public class EmployeeData : IEmployeeData
         return result.FirstOrDefault();
     }
 
-    //insert employees or both options
+    public ValueTask<int> InsertEmployeesAsync(IEnumerable<EmployeeModel> employees)
+    {
+        return _db.SaveDataSetAsync(
+            "dbo.spEmployee_InsertSet",
+            employees,
+            "employees",
+            "dbo.EmployeeSet");
+    }
+
     public ValueTask<int> InsertEmployeeAsync(EmployeeModel employee)
     {
-        // need to insert set of employees not just one. udt makes sense here mb
         return _db.SaveDataAsync(
             "dbo.spEmployee_Insert",
             employee);

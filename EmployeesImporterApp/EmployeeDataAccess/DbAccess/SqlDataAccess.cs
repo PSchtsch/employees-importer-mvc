@@ -41,4 +41,24 @@ public class SqlDataAccess : ISqlDataAccess
             parameters,
             commandType: CommandType.StoredProcedure);
     }
+
+    public async ValueTask<int> SaveDataSetAsync<T>(
+        string storedProcedureName,
+        IEnumerable<T> dataSet,
+        string udtParameterName,
+        string udtTypeName,
+        string connectionId = "Default") where T : class
+    {
+        var dataTable = dataSet.ToDataTable();
+        var parameters = new DynamicParameters();
+        parameters.Add(udtParameterName, dataTable.AsTableValuedParameter(udtTypeName));
+
+        using IDbConnection connection =
+            new SqlConnection(_configuration.GetConnectionString(connectionId));
+
+        return await connection.ExecuteAsync(
+            storedProcedureName,
+            parameters,
+            commandType: CommandType.StoredProcedure);
+    }
 }

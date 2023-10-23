@@ -9,5 +9,6 @@ public interface IEmployeeData
     Task<EmployeeModel?> GetEmployeeAsync(int id);
     Task<IEnumerable<EmployeeModel>> GetEmployeesAsync(string searchTerm);
     ValueTask<int> InsertEmployeeAsync(EmployeeModel employee);
+    ValueTask<int> InsertEmployeesAsync(IEnumerable<EmployeeModel> employees);
     ValueTask<int> UpdateEmployeeAsync(EmployeeModel employee);
 }
