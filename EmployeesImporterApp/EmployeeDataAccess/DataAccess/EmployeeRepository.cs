@@ -3,11 +3,11 @@ using EmployeeDataAccess.Models;
 
 namespace EmployeeDataAccess.DataAccess;
 
-public class EmployeeData : IEmployeeData
+public class EmployeeRepository : IEmployeeRepository
 {
     private readonly ISqlDataAccess _db;
 
-    public EmployeeData(ISqlDataAccess db)
+    public EmployeeRepository(ISqlDataAccess db)
     {
         _db = db;
     }

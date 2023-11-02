@@ -2,7 +2,7 @@
 
 namespace EmployeeDataAccess.DataAccess;
 
-public interface IEmployeeData
+public interface IEmployeeRepository
 {
     ValueTask<int> DeleteEmployeeAsync(int id);
     Task<IEnumerable<EmployeeModel>> GetAllEmployeesAsync();
